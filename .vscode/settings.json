@@ -1,0 +1,6 @@
+{
+    "IDX.aI.enableInlineCompletion": true,
+    "IDX.aI.enableCodebaseIndexing": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": ["--line-length=120"]
+}
