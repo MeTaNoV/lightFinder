@@ -36,7 +36,7 @@ def generate_room(length: float, width: float) -> Dict:
     return room
 
 
-def generate_lights(room: Dict, room_type: str) -> List[Dict]:
+def generate_lights(room: Dict, room_type: str) -> tuple[List[Dict], List[Dict]]:
     """
     Generates a list of lights for the given room based on the room type.
 
@@ -45,7 +45,7 @@ def generate_lights(room: Dict, room_type: str) -> List[Dict]:
         room_type: The type of the room (e.g., "living_room", "bedroom").
 
     Returns:
-        A tuple composed of a light pattern and the final light layout
+        A tuple composed of a light pattern and the light layout
     """
     length = room["length"]
     width = room["width"]
@@ -113,6 +113,17 @@ def save_room_to_file(room: Dict, filename: str) -> None:
     """
     with open(filename, "w") as file:
         json.dump(room, file)
+
+
+def save_room_to_string(room: Dict) -> str:
+    """
+    Saves the given room to a JSON string.
+
+    Args:
+        room: A dictionary representing the room.
+        filename: The name of the file to save the room to.
+    """
+    return json.dumps(room)
 
 
 if __name__ == "__main__":
