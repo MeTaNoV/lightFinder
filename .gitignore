@@ -1,3 +1,2 @@
 __pycache__/
-room_layout.json
-room_pattern.json
+ai/dataset/generated/*
