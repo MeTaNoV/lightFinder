@@ -108,6 +108,25 @@ def save_room_to_file(room: Room, filename: str) -> None:
         json.dump(room.to_dict(), file)
 
 
+def load_room_from_file(filename: str) -> Room:
+    """
+    Loads a room from a JSON file with the specified filename.
+
+    Args:
+        filename: The name of the file to load the room from.
+
+    Returns:
+        A Room instance with properly nested Coordinate objects.
+    """
+    with open(filename, "r") as file:
+        room_dict = json.load(file)
+        # Convert coordinate dictionaries to Coordinate objects
+        room_dict["coordinates"] = [Coordinate(**coord) for coord in room_dict["coordinates"]]
+        if "lights" in room_dict:
+            room_dict["lights"] = [Coordinate(**coord) for coord in room_dict["lights"]]
+        return Room(**room_dict)
+
+
 def save_room_to_string(room: Room) -> str:
     """
     Saves the given room to a JSON string.
@@ -117,6 +136,24 @@ def save_room_to_string(room: Room) -> str:
         filename: The name of the file to save the room to.
     """
     return json.dumps(room.to_dict())
+
+
+def load_room_from_string(room_str: str) -> Room:
+    """
+    Loads a room from a JSON string.
+
+    Args:
+        room_str: A JSON string representing the room.
+
+    Returns:
+        A Room instance with properly nested Coordinate objects.
+    """
+    room_dict = json.loads(room_str)
+    # Convert coordinate dictionaries to Coordinate objects
+    room_dict["coordinates"] = [Coordinate(**coord) for coord in room_dict["coordinates"]]
+    if "lights" in room_dict:
+        room_dict["lights"] = [Coordinate(**coord) for coord in room_dict["lights"]]
+    return Room(**room_dict)
 
 
 if __name__ == "__main__":
