@@ -67,7 +67,7 @@ def generate_dataset(num_rooms) -> List[Room]:
 
 
 if __name__ == "__main__":
-    dataset = generate_dataset(300)
+    dataset = generate_dataset(500)
 
     # save dataset to a json file
     with open("ai/dataset/generated/dataset.json", "w") as f:

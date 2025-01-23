@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw
 from room_data import Room
+from room_generator import load_room_from_file
 
 
 def generate_room_image(room: Room, filename: str) -> None:
@@ -22,3 +23,8 @@ def generate_room_image(room: Room, filename: str) -> None:
 
     # Save the image
     img.save(filename)
+
+
+if __name__ == "__main__":
+    room_0_176_146_2_phi4_2 = load_room_from_file("ai/dataset/generated/room_0_176_146_2_phi4-2.json")
+    generate_room_image(room_0_176_146_2_phi4_2, "ai/dataset/generated/room_0_176_146_2_phi4-2.png")
